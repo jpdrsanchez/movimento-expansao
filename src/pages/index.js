@@ -1,13 +1,22 @@
-import Container from '../components/Container';
-import Text from '../components/Text';
-import Title from '../components/Title';
+import HomeBandeiras from '../components/HomeBandeiras';
+import HomeBlog from '../components/HomeBlog/HomeBlog';
+import HomeContact from '../components/HomeContact';
+import HomeManifesto from '../components/HomeManifesto/HomeManifesto';
+import Slide from '../components/HomeSlide/Slide';
+import HomeSobre from '../components/HomeSobre';
+import HomeVideos from '../components/HomeVideos/HomeVideos';
 
 const Home = () => {
   return (
-    <Container>
-      <Title>My NextJS - Starter Template</Title>
-      <Text>NextJS | ReactJS | Styled Components</Text>
-    </Container>
+    <main>
+      <Slide />
+      <HomeManifesto />
+      <HomeSobre />
+      <HomeBandeiras />
+      <HomeVideos />
+      <HomeBlog />
+      <HomeContact />
+    </main>
   );
 };
 

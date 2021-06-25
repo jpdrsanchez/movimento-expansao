@@ -26,8 +26,8 @@ const Wrapper = styled.div`
   }
 `;
 
-const Container = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+const Container = ({ children, className }) => {
+  return <Wrapper className={className}>{children}</Wrapper>;
 };
 
 export default Container;

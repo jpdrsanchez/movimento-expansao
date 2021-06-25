@@ -8,11 +8,25 @@ const GlobalStyles = createGlobalStyle`
 
   :root {
     /* Typography */
-    --main-font: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --main-font: 'Spartan', sans-serif;
+    --second-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     /* Colors */
-    --black: #222;
+    --black: #0E0E10;
+    --black-2: #404040;
+    --black-3: #191919;
+    --black-4: #2D2C2C;
     --white: #fff;
+    --white-2: #F6F6F6;
+    --white-3: #E8E8E8;
+    --white-4: #808080;
+    --orange: #D57522;
+    --grey: #3E3E3E;
+    --grey-2: #262626;
+    --grey-3: #ececec;
+    --grey-4: #363636;
+    --grey-5: #D1D1D1;
+    --grey-6: #ACACAC;
 
     /* Units */
     --gutter: .9375rem; // 15px
@@ -24,6 +38,7 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     box-sizing: border-box;
+    scroll-behavior: smooth;
   }
 
   *,
