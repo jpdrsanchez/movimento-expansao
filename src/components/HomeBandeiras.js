@@ -1,4 +1,6 @@
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import useScroll from '../hooks/useScroll';
 import Container from './Container';
 import HomeBandeirasCard from './HomeBandeirasCard';
 
@@ -12,6 +14,16 @@ const BandeirasSection = styled.section`
     line-height: 2.5rem;
     text-align: center;
     margin-bottom: 2.75rem;
+    opacity: 0;
+    transform: translateY(2.5rem);
+    transition: opacity 0.7s, transform 1s;
+  }
+
+  &.active {
+    h1 {
+      opacity: 1;
+      transform: none;
+    }
   }
 `;
 
@@ -41,6 +53,20 @@ const BandeirasWrapper = styled.div`
     column-gap: 2.125rem;
     grid-template-columns: repeat(4, 1fr);
   }
+
+  article {
+    opacity: 0;
+    transform: translateY(2.5rem);
+    transition-delay: 0.3s;
+    transition: opacity 0.7s, transform 1s;
+  }
+
+  &.active {
+    article {
+      opacity: 1;
+      transform: none;
+    }
+  }
 `;
 
 const bandeiraData = [
@@ -55,11 +81,29 @@ const bandeiraData = [
 ];
 
 const HomeBandeiras = () => {
+  const wrapper = useRef(null);
+  const { position } = useScroll();
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (wrapper?.current) {
+      const halfWindow = window.innerHeight * 0.6;
+
+      if (window.pageYOffset > wrapper.current.offsetTop - halfWindow) {
+        setActive(true);
+      }
+    }
+  }, [position]);
+
   return (
-    <BandeirasSection id="bandeiras">
+    <BandeirasSection
+      id="bandeiras"
+      ref={wrapper}
+      className={active && 'active'}
+    >
       <BandeiraContainer>
         <h1>Nossas bandeiras</h1>
-        <BandeirasWrapper>
+        <BandeirasWrapper className={active && 'active'}>
           {bandeiraData.map((data, index) => (
             <HomeBandeirasCard key={index} content={data} />
           ))}

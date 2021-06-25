@@ -2,9 +2,22 @@ import 'slick-carousel/slick/slick.css';
 import Slider from 'react-slick';
 import SlideItem from './SlideItem';
 import styled from 'styled-components';
+import { useEffect, useRef, useState } from 'react';
+import useScroll from '../../hooks/useScroll';
 
 const Wrapper = styled.section`
   position: relative;
+  opacity: 0;
+  transition: all 0.3s;
+
+  &.active {
+    opacity: 1;
+
+    h1 {
+      opacity: 1;
+      transform: none;
+    }
+  }
 
   .slick-dots {
     position: absolute;
@@ -46,9 +59,29 @@ const Wrapper = styled.section`
       justify-content: center;
     }
   }
+
+  h1 {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition: transform 0.7s, opacity 1s;
+  }
 `;
 
 const Slide = () => {
+  const wrapper = useRef(null);
+  const { position } = useScroll();
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (wrapper?.current) {
+      const halfWindow = window.innerHeight * 0.6;
+
+      if (window.pageYOffset > wrapper.current.offsetTop - halfWindow) {
+        setActive(true);
+      }
+    }
+  }, [position]);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -59,7 +92,7 @@ const Slide = () => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper ref={wrapper} className={active && 'active'}>
       <Slider {...settings}>
         <SlideItem />
         <SlideItem />

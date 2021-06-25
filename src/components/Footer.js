@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import Container from './Container';
 import SocialList from './SocialList';
 import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
+import useScroll from '../hooks/useScroll';
 
 const FooterWrapper = styled.footer`
   padding-top: 6rem;
@@ -21,6 +23,10 @@ const FooterWrapper = styled.footer`
     text-align: center;
     margin-top: 5.375rem;
     margin-bottom: 1.75rem;
+    opacity: 0;
+    transform: translateY(2.5rem);
+    transition: opaicty 0.7s, transform 1s;
+    transition-delay: 0.3s;
   }
 
   & > div > ul {
@@ -30,9 +36,25 @@ const FooterWrapper = styled.footer`
     flex-wrap: wrap;
     padding-bottom: 2.125rem;
     border-bottom: 0.125rem solid var(--orange);
+    opacity: 0;
+    transform: translateY(2.5rem);
+    transition: opaicty 0.7s, transform 1s;
+    transition-delay: 0.6s;
 
     li {
       padding: 1rem;
+    }
+  }
+
+  &.active {
+    h2 {
+      opacity: 1;
+      transform: none;
+    }
+
+    & > div > ul {
+      opacity: 1;
+      transform: none;
     }
   }
 `;
@@ -49,6 +71,14 @@ const FooterSocial = styled.div`
   align-items: center;
   position: relative;
   box-shadow: 0px 0px 65px #0000006e;
+  opacity: 0;
+  transform: translateY(2.5rem);
+  transition: opacity 0.7s, transform 1s;
+
+  &.active {
+    opacity: 1;
+    transform: none;
+  }
 
   @media (min-width: 48em) {
     grid-template-columns: 1fr 1fr;
@@ -93,10 +123,24 @@ const FooterSocial = styled.div`
 `;
 
 const Footer = () => {
+  const wrapper = useRef(null);
+  const { position } = useScroll();
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (wrapper?.current) {
+      const halfWindow = window.innerHeight * 0.6;
+
+      if (window.pageYOffset > wrapper.current.offsetTop - halfWindow) {
+        setActive(true);
+      }
+    }
+  }, [position]);
+
   return (
-    <FooterWrapper id="apoiadores">
+    <FooterWrapper id="apoiadores" ref={wrapper} className={active && 'active'}>
       <Container>
-        <FooterSocial>
+        <FooterSocial className={active && 'active'}>
           <p>Acompanhe o Movimento nas redes sociais</p>
           <SocialList
             width="4.125rem"

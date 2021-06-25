@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import Container from './Container';
 import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
+import useScroll from '../hooks/useScroll';
 
 const SobreSection = styled.section`
   padding-top: 7.125rem;
@@ -34,9 +36,25 @@ const SobreContainer = styled(Container)`
 const SobreImage = styled.div`
   display: flex;
   justify-content: flex-end;
+  opacity: 0;
+  transform: translateX(-2.5rem);
+  transition: opacity 0.7s, transform 1s;
+
+  &.active {
+    opacity: 1;
+    transform: none;
+  }
 `;
 
 const SobreContent = styled.div`
+  opacity: 0;
+  transform: translateX(2.5rem);
+  transition: opacity 0.7s, transform 1s;
+
+  &.active {
+    opacity: 1;
+    transform: none;
+  }
   @media (max-width: 47.9375em) {
     text-align: center;
   }
@@ -75,10 +93,24 @@ const SobreContent = styled.div`
 `;
 
 const HomeSobre = () => {
+  const wrapper = useRef(null);
+  const { position } = useScroll();
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (wrapper?.current) {
+      const halfWindow = window.innerHeight * 0.6;
+
+      if (window.pageYOffset > wrapper.current.offsetTop - halfWindow) {
+        setActive(true);
+      }
+    }
+  }, [position]);
+
   return (
-    <SobreSection id="sobre">
+    <SobreSection id="sobre" ref={wrapper}>
       <SobreContainer>
-        <SobreImage>
+        <SobreImage className={active && 'active'}>
           <Image
             src="/images/quem-somos.png"
             alt="Quem somos e o que buscamos"
@@ -87,7 +119,7 @@ const HomeSobre = () => {
             quality={100}
           />
         </SobreImage>
-        <SobreContent>
+        <SobreContent className={active && 'active'}>
           <h1>
             Quem somos
             <br />e o que buscamos

@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import { ScrollProvider } from '../context/ScrollContext';
 import GlobalStyles from '../styles/global';
 
 function MyApp({ Component, pageProps }) {
@@ -10,9 +11,11 @@ function MyApp({ Component, pageProps }) {
         <title>Movimento Expansão</title>
       </Head>
       <GlobalStyles />
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
+      <ScrollProvider>
+        <Header />
+        <Component {...pageProps} />
+        <Footer />
+      </ScrollProvider>
     </>
   );
 }

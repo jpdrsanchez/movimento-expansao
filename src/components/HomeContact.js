@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import useForm from '../hooks/useForm';
+import useScroll from '../hooks/useScroll';
 import Container from './Container';
 import Input from './Form/Input';
 import PhoneInput from './Form/PhoneInput';
@@ -20,7 +22,26 @@ const ContactContainer = styled(Container)`
     line-height: 2rem;
     text-align: center;
     margin-bottom: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 62rem;
+    opacity: 0;
+    transform: translateX(2.5rem);
+    transition: opacity 0.7s, trasnform 1s;
+  }
+
+  &.active {
+    h1 {
+      transform: none;
+      opacity: 1;
+    }
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.5rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 `;
 
@@ -29,6 +50,15 @@ const Form = styled.form`
   gap: 0.875rem;
   max-width: 55rem;
   margin: 0 auto;
+  opacity: 0;
+  transform: translateY(2.5rem);
+  transition: opacity 0.7s, transform 1s;
+  transition-delay: 0.3s;
+
+  &.active {
+    opacity: 1;
+    transform: none;
+  }
 
   @media (min-width: 36em) {
     grid-template-columns: 1fr 1fr;
@@ -50,6 +80,14 @@ const Form = styled.form`
     &::placeholder {
       color: var(--white-4);
       text-transform: uppercase;
+    }
+
+    &.error {
+      border: 0.0625rem solid red !important;
+
+      &::placeholder {
+        color: red;
+      }
     }
   }
 
@@ -93,31 +131,57 @@ const Form = styled.form`
 `;
 
 const HomeContact = () => {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [mail, setMail] = useState('');
-  const [message, setMessage] = useState('');
+  const name = useForm();
+  const phone = useForm();
+  const mail = useForm('email');
+  const message = useForm();
   const [sent, setSent] = useState(false);
 
+  const wrapper = useRef(null);
+  const { position } = useScroll();
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (wrapper?.current) {
+      const halfWindow = window.innerHeight * 0.6;
+
+      if (window.pageYOffset > wrapper.current.offsetTop - halfWindow) {
+        setActive(true);
+      }
+    }
+  }, [position]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (
+      name.validate() &&
+      phone.validate() &&
+      mail.validate() &&
+      message.validate()
+    ) {
+      setSent(true);
+    }
+  };
+
   return (
-    <Section id="contato">
-      <ContactContainer>
+    <Section id="contato" ref={wrapper}>
+      <ContactContainer className={active && 'active'}>
         <h1>
           Quer contribuir com ideias, sugestões ou contar sua história para a
           gente ? Entre em contato:
         </h1>
-        <Form onSubmit={(e) => e.preventDefault()}>
-          <Input type="text" id="nome" label="Nome" setValue={setName} />
-          <PhoneInput
-            type="text"
-            id="telefone"
-            label="telefone"
-            setValue={setPhone}
-          />
-          <Input type="email" id="email" label="E-mail" setValue={setMail} />
-          <Textarea id="mensagem" label="Mensagem" setValue={setMessage} />
-          <button type="submit">Enviar</button>
-        </Form>
+        {sent ? (
+          <p>Formulário Enviado</p>
+        ) : (
+          <Form onSubmit={handleSubmit} className={active && 'active'}>
+            <Input type="text" id="nome" label="Nome" {...name} />
+            <PhoneInput type="text" id="telefone" label="telefone" {...phone} />
+            <Input type="email" id="email" label="E-mail" {...mail} />
+            <Textarea id="mensagem" label="Mensagem" {...message} />
+            <button type="submit">Enviar</button>
+          </Form>
+        )}
       </ContactContainer>
     </Section>
   );

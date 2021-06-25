@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import HomeBandeiras from '../components/HomeBandeiras';
 import HomeBlog from '../components/HomeBlog/HomeBlog';
 import HomeContact from '../components/HomeContact';
@@ -5,6 +6,7 @@ import HomeManifesto from '../components/HomeManifesto/HomeManifesto';
 import Slide from '../components/HomeSlide/Slide';
 import HomeSobre from '../components/HomeSobre';
 import HomeVideos from '../components/HomeVideos/HomeVideos';
+import useScroll from '../hooks/useScroll';
 
 const Home = () => {
   return (
