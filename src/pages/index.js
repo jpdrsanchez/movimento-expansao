@@ -16,7 +16,7 @@ const Home = () => {
       <HomeSobre />
       <HomeBandeiras />
       <HomeVideos />
-      <HomeBlog />
+      {/* <HomeBlog /> */}
       <HomeContact />
     </main>
   );

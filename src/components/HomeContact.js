@@ -9,6 +9,7 @@ import Textarea from './Form/Textarea';
 
 const Section = styled.section`
   position: relative;
+  margin-top: 3.75rem;
 `;
 
 const ContactContainer = styled(Container)`
