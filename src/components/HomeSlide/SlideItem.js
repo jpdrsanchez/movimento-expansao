@@ -47,7 +47,7 @@ const SlideItem = () => {
       />
       <ItemBg />
       <ItemContent>
-        <h1>Lorem ipsum dolor sit amet, consectetur adipiscing</h1>
+        {/* <h1>Lorem ipsum dolor sit amet, consectetur adipiscing</h1> */}
       </ItemContent>
     </Item>
   );

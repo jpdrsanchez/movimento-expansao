@@ -35,11 +35,14 @@ const FooterWrapper = styled.footer`
     justify-content: space-between;
     flex-wrap: wrap;
     padding-bottom: 2.125rem;
-    border-bottom: 0.125rem solid var(--orange);
     opacity: 0;
     transform: translateY(2.5rem);
     transition: opaicty 0.7s, transform 1s;
     transition-delay: 0.6s;
+
+    &:last-of-type {
+      border-bottom: 0.125rem solid var(--orange);
+    }
 
     li {
       padding: 1rem;
@@ -195,6 +198,62 @@ const Footer = () => {
               height={110}
               quality={100}
               alt="Noz Pesquisa e Inteligência"
+            />
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <Image
+              src="/images/stm.png"
+              width={95}
+              height={95}
+              quality={100}
+              alt="Stm. Somos todas marias"
+            />
+          </li>
+          <li>
+            <Image
+              src="/images/perola.png"
+              width={166}
+              height={89}
+              quality={100}
+              alt="Crédito Pérola"
+            />
+          </li>
+          <li>
+            <Image
+              src="/images/mulheres.png"
+              width={150}
+              height={103}
+              quality={100}
+              alt="Grupo Mulheres do Brasil"
+            />
+          </li>
+          <li>
+            <Image
+              src="/images/quintessa.png"
+              width={169}
+              height={56}
+              quality={100}
+              alt="Quintessa"
+            />
+          </li>
+          <li>
+            <Image
+              src="/images/karina.png"
+              width={138}
+              height={133}
+              quality={100}
+              alt="Conselheira Karina Almeida"
+            />
+          </li>
+          <li>
+            <Image
+              src="/images/jeronimo.png"
+              width={138}
+              height={133}
+              quality={100}
+              alt="Conselheiro Jerônimo Ramos"
             />
           </li>
         </ul>
