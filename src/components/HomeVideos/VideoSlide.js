@@ -49,10 +49,38 @@ const Wrapper = styled.div`
 `;
 
 const itemData = [
-  { id: '1', image: '/images/slide-bg.png' },
-  { id: '2', image: '/images/card-2.jpg' },
-  { id: '3', image: '/images/card-1.jpg' },
-  { id: '4', image: '/images/card-3.jpg' },
+  {
+    id: 'NtZTaaJJs-U',
+    title: 'Davila Vanusa - Agricultora e Empreendedora apoiada pela Acreditar',
+    isthumb: false,
+  },
+  {
+    id: '_k_fFyDcmZ4',
+    title: 'Erica Maria - Cabeleireira e Empreendedora apoiada pela Acreditar',
+    isthumb: false,
+  },
+  {
+    id: 'DKEvuOPcGR4',
+    title:
+      'Flaviana Maria - Comerciante e Empreendedora apoiada pela Acreditar',
+    isthumb: false,
+  },
+  {
+    id: 'NtZTaaJJs-U',
+    title: 'Davila Vanusa - Agricultora e Empreendedora apoiada pela Acreditar',
+    isthumb: false,
+  },
+  {
+    id: '_k_fFyDcmZ4',
+    title: 'Erica Maria - Cabeleireira e Empreendedora apoiada pela Acreditar',
+    isthumb: false,
+  },
+  {
+    id: 'DKEvuOPcGR4',
+    title:
+      'Flaviana Maria - Comerciante e Empreendedora apoiada pela Acreditar',
+    isthumb: false,
+  },
 ];
 
 const VideoSlide = () => {
@@ -79,8 +107,13 @@ const VideoSlide = () => {
   return (
     <Wrapper>
       <Slider {...settings}>
-        {itemData.map((item) => (
-          <VideoSlideItem key={item.id} image={item.image} />
+        {itemData.map((item, index) => (
+          <VideoSlideItem
+            key={index}
+            id={item.id}
+            title={item.title}
+            isthumb={item.isthumb}
+          />
         ))}
       </Slider>
     </Wrapper>

@@ -6,9 +6,12 @@ import HomeManifesto from '../components/HomeManifesto/HomeManifesto';
 import Slide from '../components/HomeSlide/Slide';
 import HomeSobre from '../components/HomeSobre';
 import HomeVideos from '../components/HomeVideos/HomeVideos';
-import useScroll from '../hooks/useScroll';
+import VideoModal from '../components/HomeVideos/VideoModal';
+import useModal from '../hooks/useModal';
 
 const Home = () => {
+  const { open } = useModal();
+
   return (
     <main>
       <Slide />
@@ -18,6 +21,7 @@ const Home = () => {
       <HomeVideos />
       {/* <HomeBlog /> */}
       <HomeContact />
+      {open && <VideoModal />}
     </main>
   );
 };

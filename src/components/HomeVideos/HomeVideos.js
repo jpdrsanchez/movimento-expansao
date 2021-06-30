@@ -26,6 +26,15 @@ const VideosSection = styled.section`
       transform: none;
     }
   }
+
+  h1 {
+    color: var(--grey);
+    font-size: 1.875rem;
+    font-weight: 700;
+    line-height: 2.5rem;
+    text-align: center;
+    margin-bottom: 2.75rem;
+  }
 `;
 
 const HomeVideos = () => {
@@ -46,6 +55,10 @@ const HomeVideos = () => {
   return (
     <VideosSection id="videos" ref={wrapper} className={active && 'active'}>
       <Container>
+        <h1>
+          Mulheres Empreendedoras que tiveram a oportunidade do acesso ao
+          crédito por iniciativas que inspiram o Movimento Expansão.
+        </h1>
         <VideoSlide />
       </Container>
     </VideosSection>

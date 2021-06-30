@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import Image from 'next/image';
+import YoutubeEmbed from '../helpers/YoutubeEmbed';
+import useModal from '../../hooks/useModal';
 
 const Item = styled.div`
   position: relative;
@@ -28,6 +30,13 @@ const ItemThumb = styled.div`
     height: 24.875rem;
     border-radius: 2.8125rem;
   }
+
+  & > div {
+    &:first-child {
+      padding-bottom: 0;
+      height: 100%;
+    }
+  }
 `;
 
 const ItemContent = styled.div`
@@ -48,29 +57,34 @@ const ItemContent = styled.div`
   }
 `;
 
-const VideoSlideItem = ({ image }) => {
+const VídeoClick = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+const VideoSlideItem = ({ id, title, isthumb }) => {
+  const { setOpen, setContent } = useModal();
+
   return (
     <Item>
       <ItemThumb>
-        <Image
-          src={image}
-          alt="Slide"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          quality={100}
-        />
-        <Image
-          src="/images/play.svg"
-          alt="play"
-          width={48}
-          height={48}
-          quality={100}
+        <YoutubeEmbed id={id} title={title} isthumb={isthumb} />
+        <VídeoClick
+          onClick={() => {
+            setContent({
+              id,
+              title,
+            });
+            setOpen(true);
+          }}
         />
       </ItemThumb>
       <ItemContent>
-        <h2>Lorem Ipsum</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h2>{title}</h2>
+        {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
       </ItemContent>
     </Item>
   );

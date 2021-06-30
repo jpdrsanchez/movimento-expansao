@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import { ModalProvider } from '../context/ModalContext';
 import { ScrollProvider } from '../context/ScrollContext';
 import GlobalStyles from '../styles/global';
 
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps }) {
       <GlobalStyles />
       <ScrollProvider>
         <Header />
-        <Component {...pageProps} />
+        <ModalProvider>
+          <Component {...pageProps} />
+        </ModalProvider>
         <Footer />
       </ScrollProvider>
     </>
