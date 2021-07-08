@@ -21,7 +21,7 @@ const Home = () => {
       <HomeConselho />
       <HomeBandeiras />
       <HomeVideos />
-      {/* <HomeBlog /> */}
+      <HomeBlog />
       <HomeContact />
       {open && <VideoModal />}
     </main>

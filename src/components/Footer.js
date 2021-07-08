@@ -201,7 +201,7 @@ const Footer = () => {
             />
           </li>
         </ul>
-        <ul>
+        {/* <ul>
           <li>
             <Image
               src="/images/stm.png"
@@ -256,7 +256,7 @@ const Footer = () => {
               alt="Conselheiro Jerônimo Ramos"
             />
           </li>
-        </ul>
+        </ul> */}
       </Container>
     </FooterWrapper>
   );

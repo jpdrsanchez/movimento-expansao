@@ -57,7 +57,7 @@ const HomeVideos = () => {
       <Container>
         <h1>
           Mulheres Empreendedoras que tiveram a oportunidade do acesso ao
-          crédito por iniciativas que inspiram o Movimento Expansão.
+          crédito por iniciativas que inspiram o Movimento Expansão
         </h1>
         <VideoSlide />
       </Container>

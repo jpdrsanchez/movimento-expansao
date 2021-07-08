@@ -63,25 +63,30 @@ const CardContent = styled.div`
   }
 `;
 
-const BlogCard = () => {
+const BlogCard = ({ image, title, text, link }) => {
   return (
     <Card>
       <CardImage>
         <Image
-          src="/images/card-2.jpg"
-          alt="Card 2"
+          src={image ? image : '/images/card-2.jpg'}
+          alt={title ? title : 'Card 2'}
           layout="fill"
           objectFit="cover"
           objectPosition="center"
         />
       </CardImage>
       <CardContent>
-        <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</h2>
+        <h2>
+          {title
+            ? title
+            : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do'}
+        </h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          {text
+            ? text
+            : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'}
         </p>
-        <a href="#">Leia mais</a>
+        <a href={link ? link : '#'}>Leia mais</a>
       </CardContent>
     </Card>
   );

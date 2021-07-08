@@ -170,7 +170,7 @@ const HomeContact = () => {
       <ContactContainer className={active && 'active'}>
         <h1>
           Quer contribuir com ideias, sugestões ou contar sua história para a
-          gente ? Entre em contato:
+          gente? Entre em contato:
         </h1>
         {sent ? (
           <p>Formulário Enviado</p>

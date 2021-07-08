@@ -61,7 +61,12 @@ const BlogSlide = () => {
     <SlideWrapper>
       <Slider {...settings}>
         <BlogCard />
-        <BlogCard />
+        <BlogCard
+          image="/images/midia.PNG"
+          title="O Movimento Expansão pretende impulsionar crédito financeiro para microempreendedoras"
+          text="Conta com o apoio das instituições Noz Pesquisa e Inteligência e Empreendedoras Maduras."
+          link="https://www1.folha.uol.com.br/colunas/monicabergamo/2021/06/mulheres-empresarias-lancam-movimento-para-impulsionar-credito-para-microempreendedoras.shtml"
+        />
         <BlogCard />
         <BlogCard />
       </Slider>

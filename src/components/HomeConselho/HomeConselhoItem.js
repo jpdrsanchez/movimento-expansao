@@ -17,6 +17,7 @@ const Item = styled.div`
       box-shadow: 0 0.1875rem 1.25rem rgba(0, 0, 0, 0.45);
       width: 150px;
       height: 150px;
+      background: var(--grey-6);
     }
 
     &:last-of-type {
@@ -45,11 +46,26 @@ const Item = styled.div`
   }
 `;
 
+const NoImage = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
 const HomeConselhoItem = ({ image, title, text }) => {
   return (
     <Item>
       <div>
-        <Image src={image} width={150} height={150} alt={title} quality={100} />
+        {image.length ? (
+          <Image
+            src={image}
+            width={150}
+            height={150}
+            alt={title}
+            quality={100}
+          />
+        ) : (
+          <NoImage />
+        )}
       </div>
       <div>
         <h2>{title}</h2>
