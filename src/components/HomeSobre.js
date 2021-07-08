@@ -6,16 +6,6 @@ import useScroll from '../hooks/useScroll';
 
 const SobreSection = styled.section`
   padding-top: 7.125rem;
-  padding-bottom: 23.1875rem;
-  background: url('/images/wave-2.svg') no-repeat center top 50rem;
-
-  @media (min-width: 48em) {
-    background-position: center top 30rem;
-  }
-
-  @media (min-width: 105em) {
-    background-size: cover;
-  }
 `;
 
 const SobreContainer = styled(Container)`
@@ -31,6 +21,9 @@ const SobreContainer = styled(Container)`
   @media (min-width: 62em) {
     gap: 3.75rem;
   }
+  padding-bottom: 7.5rem;
+  margin-bottom: 6rem;
+  border-bottom: 0.0625rem solid var(--grey-5);
 `;
 
 const SobreImage = styled.div`
@@ -112,7 +105,7 @@ const HomeSobre = () => {
       <SobreContainer>
         <SobreImage className={active && 'active'}>
           <Image
-            src="/images/quem-somos-old.png"
+            src="/images/quem-somos.png"
             alt="Quem somos e o que buscamos"
             width={517}
             height={633}

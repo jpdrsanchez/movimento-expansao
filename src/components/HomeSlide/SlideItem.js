@@ -36,18 +36,18 @@ const ItemContent = styled(Container)`
   }
 `;
 
-const SlideItem = () => {
+const SlideItem = ({ title, image }) => {
   return (
     <Item>
       <Image
-        src="/images/slide-bg.png"
+        src={image}
         layout="fill"
         objectFit="cover"
         objectPosition="center center"
       />
       <ItemBg />
       <ItemContent>
-        {/* <h1>Lorem ipsum dolor sit amet, consectetur adipiscing</h1> */}
+        <h1>{title}</h1>
       </ItemContent>
     </Item>
   );

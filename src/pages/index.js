@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import HomeBandeiras from '../components/HomeBandeiras';
 import HomeBlog from '../components/HomeBlog/HomeBlog';
+import HomeConselho from '../components/HomeConselho/HomeConselho';
 import HomeContact from '../components/HomeContact';
 import HomeManifesto from '../components/HomeManifesto/HomeManifesto';
 import Slide from '../components/HomeSlide/Slide';
@@ -17,6 +18,7 @@ const Home = () => {
       <Slide />
       <HomeManifesto />
       <HomeSobre />
+      <HomeConselho />
       <HomeBandeiras />
       <HomeVideos />
       {/* <HomeBlog /> */}

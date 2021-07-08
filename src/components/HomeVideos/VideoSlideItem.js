@@ -57,30 +57,41 @@ const ItemContent = styled.div`
   }
 `;
 
-const VídeoClick = styled.div`
+const VideoPlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-const VideoSlideItem = ({ id, title, isthumb }) => {
+const VideoSlideItem = ({ id, title }) => {
   const { setOpen, setContent } = useModal();
 
   return (
     <Item>
-      <ItemThumb>
-        <YoutubeEmbed id={id} title={title} isthumb={isthumb} />
-        <VídeoClick
-          onClick={() => {
-            setContent({
-              id,
-              title,
-            });
-            setOpen(true);
-          }}
+      <ItemThumb
+        onClick={() => {
+          setContent({
+            id,
+            title,
+          });
+          setOpen(true);
+        }}
+      >
+        <Image
+          src={`http://img.youtube.com/vi/${id}/maxresdefault.jpg`}
+          alt={title}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
         />
+        <VideoPlay>
+          <Image src="/images/play.svg" alt="Play" width={48} height={48} />
+        </VideoPlay>
       </ItemThumb>
       <ItemContent>
         <h2>{title}</h2>

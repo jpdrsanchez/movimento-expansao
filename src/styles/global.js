@@ -27,6 +27,7 @@ const GlobalStyles = createGlobalStyle`
     --grey-4: #363636;
     --grey-5: #D1D1D1;
     --grey-6: #ACACAC;
+    --grey-7: #e5e5e5;
 
     /* Units */
     --gutter: .9375rem; // 15px
