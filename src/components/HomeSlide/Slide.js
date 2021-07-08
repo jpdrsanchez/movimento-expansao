@@ -71,22 +71,22 @@ const slideData = [
   {
     id: '1',
     title: 'Inclusão socioeconômica através de: Educação Financeira',
-    image: '/images/slides/slide-1.png',
+    image: '/images/slides/slide-1.jpg',
   },
   {
     id: '2',
     title: 'Inclusão socioeconômica através de: Formalização',
-    image: '/images/slides/slide-2.png',
+    image: '/images/slides/slide-2.jpg',
   },
   {
     id: '3',
     title: 'Inclusão socioeconômica através de: Geração de Renda',
-    image: '/images/slides/slide-3.png',
+    image: '/images/slides/slide-3.jpg',
   },
   {
     id: '4',
     title: 'Inclusão socioeconômica através de: Geração de Emprego',
-    image: '/images/slides/slide-4.png',
+    image: '/images/slides/slide-4.jpg',
   },
 ];
 

@@ -105,7 +105,7 @@ const HomeSobre = () => {
       <SobreContainer>
         <SobreImage className={active && 'active'}>
           <Image
-            src="/images/quem-somos.png"
+            src="/images/image-quem-somos.png"
             alt="Quem somos e o que buscamos"
             width={517}
             height={633}

@@ -15,15 +15,16 @@ const VideosSection = styled.section`
   }
 
   & > div {
-    opacity: 0;
-    transform: translateY(2.5rem);
-    transition: opacity 0.7s, transform 1s;
-  }
-
-  &.active {
     & > div {
-      opacity: 1;
-      transform: none;
+      opacity: 0;
+      transform: translateY(2.5rem);
+      transition: opacity 0.7s, transform 1s;
+      transition-delay: 0.5s;
+
+      &.active {
+        opacity: 1;
+        transform: none;
+      }
     }
   }
 
@@ -34,6 +35,14 @@ const VideosSection = styled.section`
     line-height: 2.5rem;
     text-align: center;
     margin-bottom: 2.75rem;
+    opacity: 0;
+    transform: translateY(-2.5rem);
+    transition: opacity 0.7s, transform 1s;
+
+    &.active {
+      opacity: 1;
+      transform: none;
+    }
   }
 `;
 
@@ -53,13 +62,15 @@ const HomeVideos = () => {
   }, [position]);
 
   return (
-    <VideosSection id="videos" ref={wrapper} className={active && 'active'}>
+    <VideosSection id="videos" ref={wrapper}>
       <Container>
-        <h1>
+        <h1 className={active && 'active'}>
           Mulheres Empreendedoras que tiveram a oportunidade do acesso ao
           crédito por iniciativas que inspiram o Movimento Expansão
         </h1>
-        <VideoSlide />
+        <div className={active && 'active'}>
+          <VideoSlide />
+        </div>
       </Container>
     </VideosSection>
   );

@@ -18,6 +18,7 @@ const Item = styled.div`
       width: 150px;
       height: 150px;
       background: var(--grey-6);
+      overflow: hidden;
     }
 
     &:last-of-type {

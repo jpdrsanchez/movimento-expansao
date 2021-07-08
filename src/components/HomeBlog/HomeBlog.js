@@ -76,11 +76,6 @@ const HomeBlog = () => {
     <BlogSection id="artigos" ref={wrapper} className={active && 'active'}>
       <Container>
         <h1>Movimento Expansão na mídia</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-          finibus vestibulum leo, pulvinar rutrum mauris. Morbi a velit eget ex
-          blandit interdum.
-        </p>
         <BlogSlide />
       </Container>
     </BlogSection>
