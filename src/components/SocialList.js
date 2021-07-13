@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
 const SocialNav = styled.nav`
   ul {
@@ -38,7 +38,7 @@ const SocialList = ({ width, height, color, background, fontSize }) => {
       <ul>
         <li>
           <a
-            href="http://www.facebook.com.br"
+            href="https://www.facebook.com/mov.expansao"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -47,16 +47,16 @@ const SocialList = ({ width, height, color, background, fontSize }) => {
         </li>
         <li>
           <a
-            href="http://www.twitter.com.br"
+            href="https://www.linkedin.com/company/movimentoexpansao"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaTwitter />
+            <FaLinkedinIn />
           </a>
         </li>
         <li>
           <a
-            href="http://www.instagram.com.br"
+            href="https://www.instagram.com/movimento_expansao/"
             target="_blank"
             rel="noopener noreferrer"
           >
